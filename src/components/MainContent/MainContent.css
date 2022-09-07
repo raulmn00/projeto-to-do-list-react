@@ -1,0 +1,24 @@
+main.mainContent {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+.mainContentContainer {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+}
+section.completedTasks {
+	text-align: center;
+	padding: 20px 0px;
+}
+section.deletedTasks {
+	text-align: center;
+	padding: 20px 0px;
+}
+h3.activeTasksTitle {
+	margin-bottom: 10px;
+}

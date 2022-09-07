@@ -5,6 +5,7 @@
 	justify-content: space-evenly;
 	margin-top: 30px;
 	margin-bottom: 30px;
+	flex-wrap: wrap;
 }
 .headerContainer h2 {
 	text-transform: uppercase;
@@ -13,6 +14,7 @@ nav.headerNavbar {
 	width: 50%;
 	display: flex;
 	justify-content: space-evenly;
+	flex-wrap: wrap;
 }
 nav.headerNavbar p {
 	text-transform: uppercase;

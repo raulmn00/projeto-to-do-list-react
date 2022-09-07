@@ -15,6 +15,10 @@ section.completedTasks {
 	text-align: center;
 	padding: 20px 0px;
 }
+section.activeTasks {
+	text-align: center;
+	padding: 20px 0px;
+}
 section.deletedTasks {
 	text-align: center;
 	padding: 20px 0px;

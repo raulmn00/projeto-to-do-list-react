@@ -1,10 +1,17 @@
 import './TaskList.css';
 import { Tasks } from '../../mocks/Tasks.js';
 
-export function TaskList() {
+export function TaskList({ statusTask }) {
+    const taskListAccepted = [];
+    Tasks.map((task) => {
+        if (task.taskStatus === statusTask) {
+            taskListAccepted.push(task);
+        }
+    });
+    console.log(taskListAccepted);
     return (
         <>
-            {Tasks.map((task, index) => (
+            {taskListAccepted.map((task, index) => (
                 <div className="taskListContainer" key={`taskItem-${index}`}>
                     <div className="headerTask">
                         <p className="taskId"> Task Id: {task.id}</p>

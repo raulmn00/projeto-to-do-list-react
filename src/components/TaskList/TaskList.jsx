@@ -8,7 +8,7 @@ export function TaskList({ statusTask }) {
             taskListAccepted.push(task);
         }
     });
-    console.log(taskListAccepted);
+    //console.log(taskListAccepted);
     return (
         <>
             {taskListAccepted.map((task, index) => (
@@ -24,6 +24,18 @@ export function TaskList({ statusTask }) {
                         <p className="taskStatus">
                             Task Status: {task.taskStatus}
                         </p>
+                    </div>
+                    <div className="footerTask">
+                        <button type="button" className="buttonEditTask">
+                            {task.taskStatus === 'active' && 'Edit'}
+                            {task.taskStatus === 'completed' && 'Edit'}
+                            {task.taskStatus === 'deleted' && 'Edit'}
+                        </button>
+                        <button type="button" className="buttonDeleteTask">
+                            {task.taskStatus === 'active' && 'Complete'}
+                            {task.taskStatus === 'completed' && 'Conclude'}
+                            {task.taskStatus === 'deleted' && 'Exclude'}
+                        </button>
                     </div>
                 </div>
             ))}

@@ -1,14 +1,31 @@
 import './TaskList.css';
 import { Tasks } from '../../mocks/Tasks.js';
+import { useState } from 'react';
 
-export function TaskList({ statusTask }) {
+export function TaskList({ statusTaskList, setMainContentState }) {
+    const [taskListState, setTaskListState] = useState('');
     const taskListAccepted = [];
     Tasks.map((task) => {
-        if (task.taskStatus === statusTask) {
+        if (task.taskStatus === statusTaskList) {
             taskListAccepted.push(task);
         }
     });
-    //console.log(taskListAccepted);
+
+    const concludeTask = (taskIndex, taskStatus) => {
+        if (taskStatus === 'active') {
+            taskListAccepted[taskIndex].taskStatus = 'completed';
+            setTaskListState(taskListAccepted[taskIndex].taskStatus);
+            setMainContentState(taskListAccepted[taskIndex].taskStatus);
+        } else if (taskStatus === 'completed') {
+            taskListAccepted[taskIndex].taskStatus = 'deleted';
+            setTaskListState(taskListAccepted[taskIndex].taskStatus);
+            setMainContentState(taskListAccepted[taskIndex].taskStatus);
+        } else if (taskStatus === 'deleted') {
+            taskListAccepted[taskIndex].taskStatus = 'toRemove';
+            setTaskListState(taskListAccepted[taskIndex].taskStatus);
+            setMainContentState(taskListAccepted[taskIndex].taskStatus);
+        }
+    };
     return (
         <>
             {taskListAccepted.map((task, index) => (
@@ -31,7 +48,11 @@ export function TaskList({ statusTask }) {
                             {task.taskStatus === 'completed' && 'Edit'}
                             {task.taskStatus === 'deleted' && 'Edit'}
                         </button>
-                        <button type="button" className="buttonDeleteTask">
+                        <button
+                            type="button"
+                            className="buttonDeleteTask"
+                            onClick={() => concludeTask(index, task.taskStatus)}
+                        >
                             {task.taskStatus === 'active' && 'Complete'}
                             {task.taskStatus === 'completed' && 'Conclude'}
                             {task.taskStatus === 'deleted' && 'Exclude'}

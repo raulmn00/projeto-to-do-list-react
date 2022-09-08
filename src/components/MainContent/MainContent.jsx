@@ -1,34 +1,72 @@
 import { TaskList } from '../TaskList/TaskList';
 import './MainContent.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Tasks } from '../../mocks/Tasks.js';
 
 export function MainContent() {
-    const [mainContentState, setMainContentState] = useState('');
+    const [mainContentState, setMainContentState] = useState([]);
+    const [control, setControl] = useState(false);
+
+    const handleLists = () => {
+        const activeTasks = {
+            title: 'Actives Tasks',
+            tasks: [],
+            status: 'active',
+        };
+        const deletedTasks = {
+            title: 'Deleted Tasks',
+            tasks: [],
+            status: 'deleted',
+        };
+        const completedTasks = {
+            title: 'Completed Tasks',
+            tasks: [],
+            status: 'completed',
+        };
+        Tasks.map((task) => {
+            if (task.taskStatus === 'active') {
+                activeTasks.tasks.push(task);
+            } else if (task.taskStatus === 'completed') {
+                completedTasks.tasks.push(task);
+            } else if (task.taskStatus === 'deleted') {
+                deletedTasks.tasks.push(task);
+            }
+        });
+        //console.log('funcao handle lists');
+        setMainContentState([activeTasks, completedTasks, deletedTasks]);
+    };
+
+    useEffect(() => {
+        if (control) {
+            setControl(false);
+        }
+        if (mainContentState.length === 0) {
+            handleLists();
+        }
+    }, [control]);
     return (
         <>
             <main className="mainContent">
                 <div className="mainContentContainer">
-                    <section className="activeTasks">
-                        <h3 className="activeTasksTitle">Active Tasks</h3>
-                        <TaskList
-                            statusTaskList="active"
-                            setMainContentState={setMainContentState}
-                        />
-                    </section>
-                    <section className="completedTasks">
-                        <h3 className="activeTasksTitle">Completed Tasks</h3>
-                        <TaskList
-                            statusTaskList="completed"
-                            setMainContentState={setMainContentState}
-                        />
-                    </section>
-                    <section className="deletedTasks">
-                        <h3 className="activeTasksTitle">Deleted Tasks</h3>
-                        <TaskList
-                            statusTaskList="deleted"
-                            setMainContentState={setMainContentState}
-                        />
-                    </section>
+                    {mainContentState.map((listObject) => {
+                        return (
+                            <section
+                                className="activeTasks"
+                                key={listObject.title}
+                            >
+                                <h3 className="activeTasksTitle">
+                                    {listObject.title}
+                                </h3>
+                                <TaskList
+                                    statusTaskList={listObject.status}
+                                    tasks={listObject.tasks}
+                                    setMainContent={setMainContentState}
+                                    mainContent={mainContentState}
+                                    control={setControl}
+                                />
+                            </section>
+                        );
+                    })}
                 </div>
             </main>
         </>

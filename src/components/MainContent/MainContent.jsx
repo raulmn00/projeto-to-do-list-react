@@ -51,7 +51,7 @@ export function MainContent() {
                     {mainContentState.map((listObject) => {
                         return (
                             <section
-                                className="activeTasks"
+                                className={listObject.status}
                                 key={listObject.title}
                             >
                                 <h3 className="activeTasksTitle">

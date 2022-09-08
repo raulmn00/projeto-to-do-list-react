@@ -1,28 +1,61 @@
 main.mainContent {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 .mainContentContainer {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	flex-wrap: wrap;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 section.completedTasks {
-	text-align: center;
-	padding: 20px 0px;
+    text-align: center;
+    padding: 20px 0px;
 }
 section.activeTasks {
-	text-align: center;
-	padding: 20px 0px;
+    text-align: center;
+    padding: 20px 0px;
 }
 section.deletedTasks {
-	text-align: center;
-	padding: 20px 0px;
+    text-align: center;
+    padding: 20px 0px;
 }
 h3.activeTasksTitle {
-	margin-bottom: 10px;
+    margin-bottom: 10px;
+}
+section.active {
+    border: solid 1px black;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+section.completed {
+    border: solid 1px black;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
+}
+section.deleted {
+    border: solid 1px black;
+    padding: 20px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
+    justify-content: center;
 }

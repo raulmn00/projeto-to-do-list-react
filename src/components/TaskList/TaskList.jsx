@@ -1,6 +1,4 @@
 import './TaskList.css';
-import { Tasks } from '../../mocks/Tasks.js';
-import React, { useEffect, useState } from 'react';
 import { TaskItem } from '../TaskItem/TaskItem';
 
 //componente taskListItem
